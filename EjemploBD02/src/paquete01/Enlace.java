@@ -49,7 +49,6 @@ public class Enlace {
                     + "values ('%s', %s)", 
                     auto.obtenerPlaca(), 
                     auto.obtenerValorMatricula());
-            System.out.println(data);
             statement.executeUpdate(data);
             obtenerConexion().close();
         } catch (SQLException e) {  
