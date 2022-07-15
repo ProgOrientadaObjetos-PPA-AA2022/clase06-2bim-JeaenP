@@ -8,7 +8,7 @@ package paquete03;
 import java.sql.SQLException;
 import paquete01.Enlace;
 import paquete02.Ciudad;
-
+import java.util.Scanner;
 /**
  *
  * @author reroes
@@ -16,12 +16,24 @@ import paquete02.Ciudad;
 public class Principal {
     
     public static void main(String[] args) throws SQLException {
+        Scanner sc = new Scanner(System.in);
         Enlace c = new Enlace();
-        Ciudad ciudad = new Ciudad("Cuenca", 100123);
-        c.insertarCiudad(ciudad);
-        
-        for (int i = 0; i < c.obtenerDataCiudad().size(); i++) {
-            System.out.printf("%s", c.obtenerDataCiudad().get(i));
+        int op = 1;
+        while ( op != 0) {
+            System.out.println("1) Ingresar nueva ciudad en la base de datos");
+            System.out.println("0) Salir");
+            op = sc.nextInt();
+            sc.nextLine();
+            if ( op == 1) {
+                System.out.println("Ingrese el nombre de la ciudad:");
+                String nombre = sc.nextLine();
+                System.out.println("Ingrese la poblacion de la ciudad:");
+                int id = sc.nextInt();
+                Ciudad ciudad = new Ciudad(nombre , id );
+                c.insertarCiudad(ciudad);
+            }
         }
+        
+      
     }
 }
